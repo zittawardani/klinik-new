@@ -9,7 +9,7 @@
         <form action="{{ route('dokter.update', ['id' => $dokter->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="foto_dokter">Foto</label>
+                <label for="foto_dokter">Foto {{$dokter->foto_dokter}}</label>
                 <input type="file" class="form-control" id="foto_dokter" name="foto_dokter" value="{{ old('foto_dokter', $dokter->foto_dokter) }}" accept=".jpg,.png,.jpeg,.gif" required>
             </div>
             <div class="form-group">

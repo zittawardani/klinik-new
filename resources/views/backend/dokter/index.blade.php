@@ -25,7 +25,7 @@
                         <td>{{ $dokter->sip }}</td>
                         <td>
                         @if($dokter->foto_dokter)
-                            <img src="{{ asset('storage/dokter/' . $dokter->foto_dokter) }}" alt="{{ $dokter->title }}" width="100">
+                            <img src="{{ asset('storage/dokter/' . $dokter->foto_dokter) }}" alt="Profile {{ $dokter->nama_dokter }}" width="100">
                         @endif
                         </td>
                         <td>{{ $dokter->nama_dokter}}</td>

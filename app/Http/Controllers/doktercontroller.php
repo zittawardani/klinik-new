@@ -35,7 +35,7 @@ class doktercontroller extends Controller
         if ($request->hasFile('foto_dokter')) {
             $image = $request->file('foto_dokter');
             $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->storeAs('public/dokter', $imageName);
+            $image->storeAs('dokter', $imageName, 'public');
             $validateData['foto_dokter'] = $imageName;
         }
 
@@ -64,14 +64,19 @@ class doktercontroller extends Controller
             'nama_dokter' => 'required|string',
             'spesialis' => 'required|string'
         ]);
-
+        
         $dokter = dokter::find($id);
-
+        
         if ($request->hasFile('foto_dokter')) {
-            Storage::delete('public/dokter'.$dokter->foto_dokter);
+            $imagePath = storage_path('app/public/dokter/' . $dokter->foto_dokter);
+
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+            
             $image = $request->file('foto_dokter');
             $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->storeAs('public/dokter', $imageName);
+            $image->storeAs('dokter', $imageName, 'public');
             $validateData['foto_dokter'] = $imageName;
         }
 
@@ -79,9 +84,10 @@ class doktercontroller extends Controller
         $dokter->nama_dokter= $validateData['nama_dokter'];
         $dokter->spesialis= $validateData['spesialis'];
 
-        if(isset($validateData['img_url'])){
-            $dokter->img_url = $validateData['foto_dokter'];
+        if(isset($validateData['foto_dokter'])){
+            $dokter->foto_dokter = $validateData['foto_dokter'];
         }
+        
 
         $dokter->save();
 
