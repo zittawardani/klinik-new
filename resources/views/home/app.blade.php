@@ -17,12 +17,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Item 1</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Item 2</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Item 3</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Item 4</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Jadwal Dokter</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Fasilitas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Ulasan</a></li>
                 </ul>
-                <a href="{{ route('login')}}" class="btn btn-outline-primary ms-3">Masuk</a>
+                <a href="{{ route('login')}}" class="btn btn-outline-primary ms-3">Login Admin</a>
             </div>
         </div>
     </nav>
