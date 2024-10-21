@@ -15,6 +15,8 @@
                         <th>Foto</th>
                         <th>Nama</th>
                         <th>Spesialis</th>
+                        <th>Hari</th>
+                        <th>Sesi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -30,6 +32,8 @@
                         </td>
                         <td>{{ $dokter->nama_dokter}}</td>
                         <td>{{ $dokter->spesialis }}</td>
+                        <td>{{ $dokter->hari }}</td>
+                        <td>{{ $dokter->sesi }}</td>
                         <td>
                         <a href="{{ route('dokter.edit', $dokter->id) }}" class="btn btn-info">Edit</a>
                         <a href="{{ route('dokter.delete', $dokter->id) }}" id= "delete" class="btn btn-danger">Delete</a>

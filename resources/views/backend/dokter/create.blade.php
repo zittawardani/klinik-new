@@ -35,6 +35,26 @@
                     <option value="Saraf">Saraf</option>
                 </select>
             </div>
+            <div class="form-groupp">
+                <label for="hari" class="form-label">Hari</label>
+                <select id="hari" name="hari" class="form-control">
+                    <option value="">Pilih Hari</option>
+                    <option value="Senin">Senin</option>
+                    <option value="Selasa">Selasa</option>
+                    <option value="Rabu">Rabu</option>
+                    <option value="Kamis">Kamis</option>
+                    <option value="Jumat">Jumat</option>
+                </select>
+            </div>
+            <div class="form-groupp">
+                <label for="sesi" class="form-label">Sesi</label>
+                <select id="sesi" name="sesi" class="form-control">
+                    <option value="">Pilih Sesi</option>
+                    <option value="Sesi 1 (09:00-11:00)">Sesi 1 (09:00-11:00)</option>
+                    <option value="Sesi 2 (13:00-15:00)">Sesi 2 (13:00-15:00)</option>
+                    <option value="Sesi 3 (15:00-17:00)">Sesi 3 (15:00-17:00)</option>
+                </select>
+            </div>
             <div class="button mt-3">
             <button type="submit" class="btn btn-primary">Simpan</button>
             </div>

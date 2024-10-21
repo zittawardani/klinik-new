@@ -28,7 +28,10 @@ class doktercontroller extends Controller
             'sip' => 'required|string',
             'foto_dokter' => 'required|image|mimes:jpeg,jpg,png,gif|max:5120',
             'nama_dokter' => 'required|string',
-            'spesialis' => 'required|string'
+            'spesialis' => 'required|string',
+            'hari' => 'required|string',
+            'sesi' => 'required|string',
+
         ]);
 
         // Upload File
@@ -43,6 +46,8 @@ class doktercontroller extends Controller
         $dokter->sip= $validateData['sip'];
         $dokter->nama_dokter= $validateData['nama_dokter'];
         $dokter->spesialis= $validateData['spesialis'];
+        $dokter->hari= $validateData['hari'];
+        $dokter->sesi= $validateData['sesi'];
         $dokter->foto_dokter = $imageName;
         $dokter->save();
 
@@ -62,7 +67,9 @@ class doktercontroller extends Controller
             'sip' => 'required|string',
             'foto_dokter' => 'required|image|mimes:jpeg,jpg,png,gif|max:5120',
             'nama_dokter' => 'required|string',
-            'spesialis' => 'required|string'
+            'spesialis' => 'required|string',
+            'hari'=> 'required|string',
+            'sesi' => 'required|string',
         ]);
         
         $dokter = dokter::find($id);
@@ -83,6 +90,8 @@ class doktercontroller extends Controller
         $dokter->sip= $validateData['sip'];
         $dokter->nama_dokter= $validateData['nama_dokter'];
         $dokter->spesialis= $validateData['spesialis'];
+        $dokter->hari= $validateData['hari'];
+        $dokter->sesi= $validateData['sesi'];
 
         if(isset($validateData['foto_dokter'])){
             $dokter->foto_dokter = $validateData['foto_dokter'];

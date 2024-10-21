@@ -35,6 +35,26 @@
                     <option value="Saraf" {{ $dokter->spesialis == 'Saraf' ? 'selected' : '' }}>Saraf</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="hari" class="form-label">Hari</label>
+                <select id="hari" name="hari" class="form-control">
+                    <option value="">Pilih Hari</option>
+                    <option value="Senin" {{ $dokter->hari == 'Senin' ? 'selected' : '' }}>Senin</option>
+                    <option value="Selasa" {{ $dokter->hari == 'Selasa' ? 'selected' : '' }}>Selasa</option>
+                    <option value="Rabu" {{ $dokter->hari == 'Rabu' ? 'selected' : '' }}>Rabu</option>
+                    <option value="Kamis" {{ $dokter->hari == 'Kamis' ? 'selected' : '' }}>Kamis</option>
+                    <option value="Jumat" {{ $dokter->hari == 'Jumat' ? 'selected' : '' }}>Jumat</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sesi" class="form-label">Sesi</label>
+                <select id="sesi" name="sesi" class="form-control">
+                    <option value="">Pilih Sesi</option>
+                    <option value="Sesi 1 (09:00-11:00)" {{ $dokter->sesi == 'Sesi 1 (09:00-11:00)' ? 'selected' : '' }}>Sesi 1 (09:00-11:00)</option>
+                    <option value="Sesi 2 (13:00-15:00)" {{ $dokter->sesi == 'Sesi 2 (13:00-15:00)' ? 'selected' : '' }}>Sesi 2 (13:00-15:00)</option>
+                    <option value="Sesi 3 (15:00-17:00)" {{ $dokter->sesi == 'Sesi 3 (15:00-17:00)' ? 'selected' : '' }}>Sesi 3 (15:00-17:00)</option>
+                </select>
+            </div>
             <div class="button mt-3">
             <button type="submit" class="btn btn-primary">Simpan</button>
             </div>

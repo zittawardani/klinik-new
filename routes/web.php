@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\doktercontroller;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.app');
 });
 
 Route::get('/dashboard', function () {
@@ -27,10 +27,4 @@ Route::prefix('dokter')->group(function(){
     Route::get('/edit/{id}', [doktercontroller::class, 'edit'])->name('dokter.edit');
     Route::post('/update/{id}', [doktercontroller::class, 'update'])->name('dokter.update');
     Route::get('/delete/{id}', [doktercontroller::class, 'delete'])->name('dokter.delete');
-});
-
-Route::prefix('jadwaldokter')->group(function(){
-    Route::get('/view', [jadwaldoktercontroller::class, 'index'])->name('jadwaldokter.index');
-    Route::get('/add', [jadwaldoktercontroller::class, 'create'])->name('jadwaldokter.add');
-    Route::post('/store', [jadwaldoktercontroller::class, 'store'])->name('jadwaldokter.store');
 });
