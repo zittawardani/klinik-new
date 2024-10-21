@@ -4,9 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\doktercontroller;
 
-Route::get('/', function () {
-    return view('home.app');
-});
+require __DIR__.'/lpWeb.php';
+
+// Route::get('/', function () {
+//     return view('home.app');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');

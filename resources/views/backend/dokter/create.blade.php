@@ -48,12 +48,13 @@
             </div>
             <div class="form-groupp">
                 <label for="sesi" class="form-label">Sesi</label>
-                <select id="sesi" name="sesi" class="form-control">
+                <textarea class="form-control" placeholder="Leave a comment here" name="sesi" id="floatingTextarea2" style="height: 100px"></textarea>
+                <!-- <select id="sesi" name="sesi" class="form-control">
                     <option value="">Pilih Sesi</option>
                     <option value="Sesi 1 (09:00-11:00)">Sesi 1 (09:00-11:00)</option>
                     <option value="Sesi 2 (13:00-15:00)">Sesi 2 (13:00-15:00)</option>
                     <option value="Sesi 3 (15:00-17:00)">Sesi 3 (15:00-17:00)</option>
-                </select>
+                </select> -->
             </div>
             <div class="button mt-3">
             <button type="submit" class="btn btn-primary">Simpan</button>

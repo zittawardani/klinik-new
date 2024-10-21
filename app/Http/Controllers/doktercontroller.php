@@ -64,12 +64,12 @@ class doktercontroller extends Controller
 
     public function update(Request $request, $id) {
         $validateData = $request->validate([
-            'sip' => 'required|string',
-            'foto_dokter' => 'required|image|mimes:jpeg,jpg,png,gif|max:5120',
-            'nama_dokter' => 'required|string',
-            'spesialis' => 'required|string',
-            'hari'=> 'required|string',
-            'sesi' => 'required|string',
+            'sip' => 'nullable|string',
+            'foto_dokter' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:5120',
+            'nama_dokter' => 'nullable|string',
+            'spesialis' => 'nullable|string',
+            'hari'=> 'nullable|string',
+            'sesi' => 'nullable|string',
         ]);
         
         $dokter = dokter::find($id);
@@ -87,11 +87,11 @@ class doktercontroller extends Controller
             $validateData['foto_dokter'] = $imageName;
         }
 
-        $dokter->sip= $validateData['sip'];
-        $dokter->nama_dokter= $validateData['nama_dokter'];
-        $dokter->spesialis= $validateData['spesialis'];
-        $dokter->hari= $validateData['hari'];
-        $dokter->sesi= $validateData['sesi'];
+        $dokter->sip= $validateData['sip']  ?? $dokter->sip;
+        $dokter->nama_dokter= $validateData['nama_dokter'] ?? $dokter->nama_dokter;
+        $dokter->spesialis= $validateData['spesialis'] ?? $dokter->spesialis;
+        $dokter->hari= $validateData['hari'] ?? $dokter->hari;
+        $dokter->sesi= $validateData['sesi'] ?? $dokter->sesi;
 
         if(isset($validateData['foto_dokter'])){
             $dokter->foto_dokter = $validateData['foto_dokter'];

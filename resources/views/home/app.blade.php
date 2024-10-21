@@ -33,7 +33,7 @@
     </main>
 
     @include('home.house')
-    @include('home.scedule')
+    @includeWhen(isset($dokter), 'home.scedule')
     @include('home.footer')
 
     <!-- Bootstrap JS -->
