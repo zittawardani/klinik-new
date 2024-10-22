@@ -29,10 +29,12 @@ class doktercontroller extends Controller
             'foto_dokter' => 'required|image|mimes:jpeg,jpg,png,gif|max:5120',
             'nama_dokter' => 'required|string',
             'spesialis' => 'required|string',
-            'hari' => 'required|string',
-            'sesi' => 'required|string',
+            'jadwal' => 'required|array',
+            'jadwal.*.hari' => 'required|string',
+            'jadwal.*.sesi' => 'required|string',
 
         ]);
+
 
         // Upload File
         if ($request->hasFile('foto_dokter')) {
@@ -46,8 +48,9 @@ class doktercontroller extends Controller
         $dokter->sip= $validateData['sip'];
         $dokter->nama_dokter= $validateData['nama_dokter'];
         $dokter->spesialis= $validateData['spesialis'];
-        $dokter->hari= $validateData['hari'];
-        $dokter->sesi= $validateData['sesi'];
+        // $dokter->hari= $validateData['hari'];
+        // $dokter->sesi= $validateData['sesi'];
+        $dokter->jadwal = json_encode($request->jadwal);
         $dokter->foto_dokter = $imageName;
         $dokter->save();
 
@@ -68,8 +71,9 @@ class doktercontroller extends Controller
             'foto_dokter' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:5120',
             'nama_dokter' => 'nullable|string',
             'spesialis' => 'nullable|string',
-            'hari'=> 'nullable|string',
-            'sesi' => 'nullable|string',
+            'jadwal' => 'required|array',
+            'jadwal.*.hari' => 'required|string',
+            'jadwal.*.sesi' => 'required|string',
         ]);
         
         $dokter = dokter::find($id);
@@ -90,8 +94,7 @@ class doktercontroller extends Controller
         $dokter->sip= $validateData['sip']  ?? $dokter->sip;
         $dokter->nama_dokter= $validateData['nama_dokter'] ?? $dokter->nama_dokter;
         $dokter->spesialis= $validateData['spesialis'] ?? $dokter->spesialis;
-        $dokter->hari= $validateData['hari'] ?? $dokter->hari;
-        $dokter->sesi= $validateData['sesi'] ?? $dokter->sesi;
+        $dokter->jadwal = json_encode($request->jadwal);
 
         if(isset($validateData['foto_dokter'])){
             $dokter->foto_dokter = $validateData['foto_dokter'];

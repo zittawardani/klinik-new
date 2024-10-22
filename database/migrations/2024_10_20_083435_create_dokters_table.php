@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('foto_dokter');
             $table->string('nama_dokter');
             $table->string('spesialis');
-            $table->string('hari');
-            $table->string('sesi');
+            // $table->string('hari');
+            $table->json('jadwal');
+            // $table->string('sesi');
             $table->timestamps();
         });
     }

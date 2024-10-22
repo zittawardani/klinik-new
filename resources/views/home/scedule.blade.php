@@ -1,4 +1,4 @@
-<div class="container my-5">
+<div class="container-fluid" style="background-color: #EEEEEE; padding: 100px;">
     <h2 class="text-center mb-4" style="color: #58A399;">Jadwal Praktek Dokter</h2>
     <p class="text-center mb-5">Atur janji temu Anda dengan dokter kami secara online untuk konsultasi
         dan perawatan yang sesuai dengan kebutuhan kesehatan Anda.</p>
@@ -13,8 +13,8 @@
                         <p class="card-text">{{ $dokter->spesialis }}</p>
                         <!-- Display sessions vertically -->
                         <div class="card-text">
-                            @foreach(explode(',', $dokter->sesi) as $sesi)
-                                <p>{{ $sesi }}</p>
+                            @foreach(json_decode($dokter->jadwal, true) as $jadwal)
+                            {{ $jadwal['hari'] }}, {{ $jadwal['sesi'] }} <br>
                             @endforeach
                         </div>
                         <!-- Button to Open the Modal -->
@@ -39,40 +39,40 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="konsultasiForm">
                     <div class="mb-3">
                         <label for="nik" class="form-label">NIK</label>
-                        <input type="text" class="form-control" id="nik" placeholder="Masukkan NIK">
+                        <input type="text" class="form-control" id="nik" placeholder="Masukkan NIK" required>
                     </div>
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" placeholder="Masukkan nama sesuai KTP">
+                        <input type="text" class="form-control" id="nama" placeholder="Masukkan nama sesuai KTP" required>
                     </div>
                     <div class="mb-3">
                         <label for="alamat" class="form-label">Alamat</label>
-                        <input type="text" class="form-control" id="alamat" placeholder="Masukkan alamat">
+                        <input type="text" class="form-control" id="alamat" placeholder="Masukkan alamat" required>
                     </div>
                     <div class="mb-3">
                         <label for="no_hp" class="form-label">No Hp / WhatsApp</label>
-                        <input type="text" class="form-control" id="no_hp" placeholder="Masukkan no Hp / WhatsApp">
+                        <input type="text" class="form-control" id="no_hp" placeholder="Masukkan no Hp / WhatsApp" required>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
                             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                            <select class="form-select" id="jenis_kelamin">
-                                <option selected>Pilih Jenis Kelamin</option>
+                            <select class="form-select" id="jenis_kelamin" required>
+                                <option selected disabled>Pilih Jenis Kelamin</option>
                                 <option value="Laki-laki">Laki-laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                            <input type="date" class="form-control" id="tanggal_lahir">
+                            <input type="date" class="form-control" id="tanggal_lahir" required>
                         </div>
                         <div class="col">
                             <label for="golongan_darah" class="form-label">Golongan Darah</label>
-                            <select class="form-select" id="golongan_darah">
-                                <option selected>Pilih Golongan Darah</option>
+                            <select class="form-select" id="golongan_darah" required>
+                                <option selected disabled>Pilih Golongan Darah</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
                                 <option value="AB">AB</option>
@@ -93,18 +93,19 @@
                             <input type="text" class="form-control" id="dokter" readonly>
                         </div>
                         <div class="col">
-                            <label for="sesi" class="form-label">Sesi</label>
-                            <select class="form-select" id="sesi">
-                                <option selected>Pilih Sesi</option>
-                                <option value="1">Sesi 1 (09:00-11:00)</option>
-                                <option value="2">Sesi 2 (13:00-15:00)</option>
-                                <option value="3">Sesi 3 (15:00-17:00)</option>
+                            <label for="jadwal" class="form-label">Jadwal</label>
+                            <select class="form-select" id="jadwal" required>
+                                <option selected disabled>Pilih Jadwal</option>
+                                @foreach(json_decode($dokter->jadwal, true) as $index => $jadwal)
+                                <option value="{{ $jadwal['hari'] }}, {{ $jadwal['sesi'] }}">{{ $jadwal['hari'] }} {{ $jadwal['sesi'] }}</option>
+                                @endforeach
+
                             </select>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Kirim Konsultasi</button>
+                        <button type="submit" class="btn btn-primary" id="kirimKonsultasi">Kirim Konsultasi</button>
                     </div>
                 </form>
             </div>
@@ -128,5 +129,26 @@
         
         modalNamaDokter.value = namaDokter;
         modalSpesialis.value = spesialisDokter;
+    });
+
+    document.getElementById('konsultasiForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const nik = document.getElementById('nik').value;
+        const nama = document.getElementById('nama').value;
+        const alamat = document.getElementById('alamat').value;
+        const no_hp = document.getElementById('no_hp').value;
+        const jenis_kelamin = document.getElementById('jenis_kelamin').value;
+        const tanggal_lahir = document.getElementById('tanggal_lahir').value;
+        const golongan_darah = document.getElementById('golongan_darah').value;
+        const spesialis = document.getElementById('spesialis').value;
+        const dokter = document.getElementById('dokter').value;
+        const jadwal = document.getElementById('jadwal').value;
+
+        const message = `Halo, saya ingin melakukan konsultasi.\nNIK: ${nik}\nNama: ${nama}\nAlamat: ${alamat}\nNo HP: ${no_hp}\nJenis Kelamin: ${jenis_kelamin}\nTanggal Lahir: ${tanggal_lahir}\nGolongan Darah: ${golongan_darah}\nSpesialis: ${spesialis}\nDokter: ${dokter}\nJadwal: ${jadwal}`;
+        const encodedMessage = encodeURIComponent(message);
+        const phoneNumber = no_hp.replace(/[^0-9]/g, '');
+
+        window.open(`https://wa.me/+6283847663334?text=${encodedMessage}`, '_blank');
     });
 </script>

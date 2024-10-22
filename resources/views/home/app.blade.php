@@ -23,7 +23,7 @@
                     <li class="nav-item"><a class="nav-link" style="color: white;" href="#">Fasilitas</a></li>
                     <li class="nav-item"><a class="nav-link" style="color: white;" href="#">Ulasan</a></li>
                 </ul>
-                <a href="{{ route('login')}}" class="btn btn-outline-primary ms-3 fw-bold" style="background-color: white; color: #58A399">Login Admin</a>
+                <a href="{{ route('login')}}" class="btn ms-3 fw-bold" style="background-color: white; color: #58A399">Login Admin</a>
             </div>
         </div>
     </nav>

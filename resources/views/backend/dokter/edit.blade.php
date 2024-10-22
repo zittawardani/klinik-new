@@ -35,27 +35,31 @@
                     <option value="Saraf" {{ $dokter->spesialis == 'Saraf' ? 'selected' : '' }}>Saraf</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="hari" class="form-label">Hari</label>
-                <select id="hari" name="hari" class="form-control">
-                    <option value="">Pilih Hari</option>
-                    <option value="Senin" {{ $dokter->hari == 'Senin' ? 'selected' : '' }}>Senin</option>
-                    <option value="Selasa" {{ $dokter->hari == 'Selasa' ? 'selected' : '' }}>Selasa</option>
-                    <option value="Rabu" {{ $dokter->hari == 'Rabu' ? 'selected' : '' }}>Rabu</option>
-                    <option value="Kamis" {{ $dokter->hari == 'Kamis' ? 'selected' : '' }}>Kamis</option>
-                    <option value="Jumat" {{ $dokter->hari == 'Jumat' ? 'selected' : '' }}>Jumat</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="sesi" class="form-label">Sesi</label>
-                <textarea class="form-control" placeholder="Leave a comment here" name="sesi" id="floatingTextarea2" style="height: 100px">{{ old('sesi', $dokter->sesi) }}</textarea>
-                <!-- <select id="sesi" name="sesi" class="form-control">
-                    <option value="">Pilih Sesi</option>
-                    <option value="Sesi 1 (09:00-11:00)" {{ $dokter->sesi == 'Sesi 1 (09:00-11:00)' ? 'selected' : '' }}>Sesi 1 (09:00-11:00)</option>
-                    <option value="Sesi 2 (13:00-15:00)" {{ $dokter->sesi == 'Sesi 2 (13:00-15:00)' ? 'selected' : '' }}>Sesi 2 (13:00-15:00)</option>
-                    <option value="Sesi 3 (15:00-17:00)" {{ $dokter->sesi == 'Sesi 3 (15:00-17:00)' ? 'selected' : '' }}>Sesi 3 (15:00-17:00)</option>
-                </select> -->
-            </div>
+
+            @foreach(json_decode($dokter->jadwal, true) as $index => $jadwal)
+            <label>Jadwal {{$index + 1}}</label>
+                <div class="form-group">
+                    <label for="hari{{$index}}" class="form-label">Hari</label>
+                    <select id="hari{{$index}}" name="jadwal[{{$index}}][hari]" class="form-control">
+                        <option value="">Pilih Hari</option>
+                        <option value="Senin" {{ $jadwal['hari'] == 'Senin' ? 'selected' : '' }}>Senin</option>
+                        <option value="Selasa" {{ $jadwal['hari'] == 'Selasa' ? 'selected' : '' }}>Selasa</option>
+                        <option value="Rabu" {{ $jadwal['hari'] == 'Rabu' ? 'selected' : '' }}>Rabu</option>
+                        <option value="Kamis" {{ $jadwal['hari'] == 'Kamis' ? 'selected' : '' }}>Kamis</option>
+                        <option value="Jumat" {{ $jadwal['hari'] == 'Jumat' ? 'selected' : '' }}>Jumat</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sesi{{$index}}" class="form-label">Sesi</label>
+                    <select id="sesi{{$index}}" name="jadwal[{{$index}}][sesi]" class="form-control">
+                        <option value="">Pilih Sesi</option>
+                        <option value="Sesi 1 (09:00-11:00)" {{ $jadwal['sesi'] == 'Sesi 1 (09:00-11:00)' ? 'selected' : '' }}>Sesi 1 (09:00-11:00)</option>
+                        <option value="Sesi 2 (13:00-15:00)" {{ $jadwal['sesi'] == 'Sesi 2 (13:00-15:00)' ? 'selected' : '' }}>Sesi 2 (13:00-15:00)</option>
+                        <option value="Sesi 3 (15:00-17:00)" {{ $jadwal['sesi'] == 'Sesi 3 (15:00-17:00)' ? 'selected' : '' }}>Sesi 3 (15:00-17:00)</option>
+                    </select>
+                </div>
+    @endforeach
+
             <div class="button mt-3">
             <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
