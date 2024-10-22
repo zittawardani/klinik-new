@@ -3,31 +3,39 @@
     <p class="text-center mb-5">Atur janji temu Anda dengan dokter kami secara online untuk konsultasi
         dan perawatan yang sesuai dengan kebutuhan kesehatan Anda.</p>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @if($dokter->isEmpty())
+        <div class="col text-center ">
+            <p>
+                Tidak ada data dokter yang tersedia saat ini. Silakan coba lagi nanti.
+            </p>
+        </div>
+        @else
+        <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($dokter as $dokter)
-            <div class="col">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body text-center">
-                        <img src="{{ asset('storage/dokter/'.$dokter->foto_dokter) }}" class="rounded-circle mb-3" alt="Doctor Image" width="100" height="100">
-                        <h5 class="card-title fw-bold">{{ $dokter->nama_dokter }}</h5>
-                        <p class="card-text">{{ $dokter->spesialis }}</p>
-                        <!-- Display sessions vertically -->
-                        <div class="card-text">
-                            @foreach(json_decode($dokter->jadwal, true) as $jadwal)
+        <div class="col">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <img src="{{ asset('storage/dokter/'.$dokter->foto_dokter) }}" class="rounded-circle mb-3" alt="Doctor Image" width="100" height="100">
+                    <h5 class="card-title fw-bold">{{ $dokter->nama_dokter }}</h5>
+                    <p class="card-text">{{ $dokter->spesialis }}</p>
+                    <div class="card-text">
+                        @foreach(json_decode($dokter->jadwal, true) as $jadwal)
                             {{ $jadwal['hari'] }}, {{ $jadwal['sesi'] }} <br>
-                            @endforeach
-                        </div>
-                        <!-- Button to Open the Modal -->
-                        <button type="button" class="btn btn-success" style="background-color: #58A399;" 
-                                data-bs-toggle="modal" data-bs-target="#konsultasiModal"
-                                data-nama="{{ $dokter->nama_dokter }}" data-spesialis="{{ $dokter->spesialis }}">
-                            Daftar Konsultasi
-                        </button>
+                        @endforeach
                     </div>
+                    <button type="button" class="btn btn-success" style="background-color: #58A399;" 
+                            data-bs-toggle="modal" data-bs-target="#konsultasiModal"
+                            data-nama="{{ $dokter->nama_dokter }}" data-spesialis="{{ $dokter->spesialis }}"
+                            data-jadwal="{{ $dokter->jadwal }}">
+                        Daftar Konsultasi
+                    </button>
                 </div>
             </div>
+        </div>
         @endforeach
     </div>
+    @endif
+
 </div>
 
 <!-- Modal Form -->
@@ -95,12 +103,15 @@
                         <div class="col">
                             <label for="jadwal" class="form-label">Jadwal</label>
                             <select class="form-select" id="jadwal" required>
-                                <option selected disabled>Pilih Jadwal</option>
-                                @foreach(json_decode($dokter->jadwal, true) as $index => $jadwal)
-                                <option value="{{ $jadwal['hari'] }}, {{ $jadwal['sesi'] }}">{{ $jadwal['hari'] }} {{ $jadwal['sesi'] }}</option>
-                                @endforeach
-
-                            </select>
+                            <option selected disabled>Pilih Jadwal</option>
+                            @if(isset($dokter->jadwal) && !empty(json_decode($dokter->jadwal)))
+                            @foreach(json_decode($dokter->jadwal) as $jadwal)
+                            <option value="{{ $jadwal->hari }}, {{ $jadwal->sesi }}">{{ $jadwal->hari }} {{ $jadwal->sesi }}</option>
+                            @endforeach
+                             @else
+                            <option disabled>Tidak ada jadwal yang tersedia</option>
+                            @endif
+</select>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
