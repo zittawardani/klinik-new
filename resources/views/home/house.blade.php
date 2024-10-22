@@ -1,20 +1,17 @@
-    <div class="container-fluid" style="background: linear-gradient(to bottom, #d3e4e7, #f0f4f8); min-height: 100vh;">
-        <div class="row">
+    <div class="container-fluid px-4 px-md-5 " style="background: linear-gradient(to bottom, #d3e4e7, #f0f4f8);">
+        <div class="row align-items-center justify-content-between" style="min-height: 100vh">
             <!-- Left Section -->
-            <div class="col-md-6 d-flex align-items-center">
-                <div class="p-4">
-                    <h1>Klinik APP</h1>
+            <div class="col-md-6 col-xs-12 col-lg-5">
+                    <h1 class="fs-1">Klinik APP</h1>
                     <p>Lorem ipsum dolor sit amet consectetur. Odio fermentum vulputate dictum sed amet purus. 
                     Diam venenatis ornare facilisis tortor vitae. Tincidunt vestibulum facilisi arcu duis augue quis suscipit.</p>
                     <a href="#" class="btn btn-success">Konsultasi Sekarang</a>
-                </div>
             </div>
             
             <!-- Right Section -->
             <div class="col-md-6 d-flex justify-content-center align-items-center">
-                <div>
-                    <img src="{{ asset('images/doctor-image.png') }}" alt="Doctor Image" class="img-fluid" style="border-radius: 10px;">
-                </div>
+            <img src="{{ asset('assets/img/home/img-hero.png') }}" alt="Doctor Image" class="img-fluid" style="border-radius: 10px;">
+
             </div>
         </div>
     </div>
