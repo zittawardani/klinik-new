@@ -3,14 +3,8 @@
     <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
         <!-- Kolom Kiri -->
         <div style="flex: 1;">
-            <div style="width: 100px; height: 50px; background-color: #ccc; margin-bottom: 10px;"></div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <p>Lorem ipsum dolor sit amet</p>
-            <div style="display: flex; gap: 10px; margin-top: 10px;">
-                <div style="width: 30px; height: 30px; background-color: #ccc; border-radius: 50%;"></div>
-                <div style="width: 30px; height: 30px; background-color: #ccc; border-radius: 50%;"></div>
-                <div style="width: 30px; height: 30px; background-color: #ccc; border-radius: 50%;"></div>
-            </div>
         </div>
         
         <!-- Kolom Tengah dan Kanan -->

@@ -2,7 +2,7 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex justify-content-between">
-        <h3 class="m-0 font-weight-bold text-primary">Data Dokter</h3>
+        <h3 class="m-0 font-weight-bold " style="color: #58A399;">Data Dokter</h3>
         <button type="submit" class="btn btn-success"><a href="{{ route('dokter.add') }}" class="text-white text-decoration-none">Tambah Data</a></button>
     </div>
     <div class="card-body">
