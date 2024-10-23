@@ -53,12 +53,10 @@
 ## Folder Structure
 
     ├── app
-    │   ├── Console
-    │   ├── Exceptions
     │   ├── Http
     │   ├── Models
     │   ├── Providers
-    │   └── Services
+    │   └── View
     ├── bootstrap
     ├── config
     ├── database
