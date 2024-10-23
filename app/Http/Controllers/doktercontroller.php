@@ -23,6 +23,7 @@ class doktercontroller extends Controller
         ]);
     }
 
+    // proses create data
     public function store(Request $request) {
         $validateData = $request->validate([
             'sip' => 'required|string',
@@ -32,11 +33,9 @@ class doktercontroller extends Controller
             'jadwal' => 'required|array',
             'jadwal.*.hari' => 'required|string',
             'jadwal.*.sesi' => 'required|string',
-
         ]);
 
-
-        // Upload File
+        // Upload File image
         if ($request->hasFile('foto_dokter')) {
             $image = $request->file('foto_dokter');
             $imageName = time().'.'.$image->getClientOriginalExtension();
@@ -48,15 +47,14 @@ class doktercontroller extends Controller
         $dokter->sip= $validateData['sip'];
         $dokter->nama_dokter= $validateData['nama_dokter'];
         $dokter->spesialis= $validateData['spesialis'];
-        // $dokter->hari= $validateData['hari'];
-        // $dokter->sesi= $validateData['sesi'];
         $dokter->jadwal = json_encode($request->jadwal);
         $dokter->foto_dokter = $imageName;
-        $dokter->save();
+        $dokter->save(); // menyimpan kedalam database
 
         return redirect()->route('dokter.index')->with('success', 'Data berhasil ditambahkan');
     }
 
+    // proses untuk edit data
     public function edit($id) {
         $dokter = dokter::find($id);
         return view('backend.dokter.edit', [
@@ -79,7 +77,7 @@ class doktercontroller extends Controller
         $dokter = dokter::find($id);
         
         if ($request->hasFile('foto_dokter')) {
-            $imagePath = storage_path('app/public/dokter/' . $dokter->foto_dokter);
+            $imagePath = storage_path('app/public/dokter/' . $dokter->foto_dokter); //foto disimpan pada public
 
             if (file_exists($imagePath)) {
                 unlink($imagePath);
@@ -91,6 +89,7 @@ class doktercontroller extends Controller
             $validateData['foto_dokter'] = $imageName;
         }
 
+        // proses update data
         $dokter->sip= $validateData['sip']  ?? $dokter->sip;
         $dokter->nama_dokter= $validateData['nama_dokter'] ?? $dokter->nama_dokter;
         $dokter->spesialis= $validateData['spesialis'] ?? $dokter->spesialis;
@@ -100,15 +99,15 @@ class doktercontroller extends Controller
             $dokter->foto_dokter = $validateData['foto_dokter'];
         }
         
-
         $dokter->save();
 
         return redirect()->route('dokter.index')->with('success', 'Data berhasil di update');
     }
 
+    // fungsi untuk delete data
     public function delete($id) {
         $dokter = dokter::find($id);
-        Storage::delete('public/dokter/' . $dokter->foto_dokter);
+        Storage::delete('public/dokter/' . $dokter->foto_dokter); //menghapus gambar di storage
         $dokter->delete();
 
         return redirect()->route('dokter.index')->with('success', 'Data berhasil di delete');

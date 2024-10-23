@@ -15,8 +15,6 @@
                         <th>Foto</th>
                         <th>Nama</th>
                         <th>Spesialis</th>
-                        <!-- <th>Hari</th> -->
-                        <!-- <th>Sesi</th> -->
                          <th>Jadwal</th>
                         <th>Aksi</th>
                     </tr>

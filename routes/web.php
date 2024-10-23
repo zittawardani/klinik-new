@@ -6,10 +6,6 @@ use App\Http\Controllers\doktercontroller;
 
 require __DIR__.'/lpWeb.php';
 
-// Route::get('/', function () {
-//     return view('home.app');
-// });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -22,6 +18,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+// CRUD
 Route::prefix('dokter')->group(function(){
     Route::get('/view', [doktercontroller::class, 'index'])->name('dokter.index');
     Route::get('/add', [doktercontroller::class, 'create'])->name('dokter.add');
