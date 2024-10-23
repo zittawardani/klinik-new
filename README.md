@@ -79,9 +79,10 @@
 -   app/: This directory contains the core application code such as controllers, models, and middleware.
 
     -   app/Http/Controllers/: Contains all the controllers which handle requests and responses.
-    -   app/Models/: Contains the application's Eloquent models, which interact with the database.
     -   app/Http/Requests/: Custom request validation rules are stored here.
-    -   app/Services/: Business logic or service classes to separate logic from controllers.
+    -   app/Models/: Contains the application's Eloquent models, which interact with the database.
+    -   app/Providers: directory are responsible for registering services, event listeners, middleware, and more.
+    -   app/View: including views, layouts, and templates
 
 -   routes/: This folder contains route definition files.
     -   web.php: Defines routes that are handled via HTTP web requests (browser).
