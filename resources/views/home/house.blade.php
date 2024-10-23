@@ -1,4 +1,4 @@
-    <div class="container-fluid px-4 px-md-5" style="background: white; padding: 80px;">
+    <div id="beranda" class="container-fluid px-4 px-md-5" style="background: white; padding: 80px;">
         <div class="row align-items-center justify-content-between">
             <!-- Left Section -->
             <div class="col-md-6 col-xs-12 col-lg-5">

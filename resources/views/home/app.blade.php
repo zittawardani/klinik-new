@@ -17,11 +17,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" style="color: white;" href="#">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" style="color: white;" href="#">Tentang Kami</a></li>
-                    <li class="nav-item"><a class="nav-link" style="color: white;" href="#">Jadwal Dokter</a></li>
-                    <li class="nav-item"><a class="nav-link" style="color: white;" href="#">Fasilitas</a></li>
-                    <li class="nav-item"><a class="nav-link" style="color: white;" href="#">Ulasan</a></li>
+                    <li class="nav-item"><a class="nav-link" style="color: white;" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" style="color: white;" href="#scedule">Jadwal Dokter</a></li>
                 </ul>
                 <a href="{{ route('login')}}" class="btn ms-3 fw-bold" style="background-color: white; color: #58A399">Login Admin</a>
             </div>
