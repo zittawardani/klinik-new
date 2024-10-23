@@ -12,14 +12,21 @@
 - [Contributing](#contributing)
 - [License](#license)
 
-## Code of Conduct
+## Requirements
+- PHP >= 8.0
+- Composer
+- MySQL or PostgreSQL database
+- Node.js & npm (for frontend asset compilation)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/zittawardani/klinik-new.git
 
-## Security Vulnerabilities
+2. Navigate to the project directory:
+   ```bash
+   cd klinik-new
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3. Install PHP dependencies using Composer:
+   ```bash
+   composer install
