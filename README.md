@@ -52,3 +52,27 @@
    php artisan serve
 
 ## Folder Structure
+```bash
+├── app
+│   ├── Console
+│   ├── Exceptions
+│   ├── Http
+│   ├── Models
+│   ├── Providers
+│   └── Services
+├── bootstrap
+├── config
+├── database
+│   ├── factories
+│   ├── migrations
+│   └── seeders
+├── public
+├── resources
+│   ├── css
+│   ├── js
+│   ├── lang
+│   └── views
+├── routes
+├── storage
+├── tests
+└── vendor
