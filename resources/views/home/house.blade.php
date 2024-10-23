@@ -8,7 +8,7 @@
             kami yang berdedikasi dan fasilitas modern, kami siap memberikan
             perawatan yang Anda butuhkan untuk memastikan kesehatan dan
             kesejahteraan Anda.</p>
-                    <a href="#" class="btn btn-primary" style="background-color: #58A399;">Konsultasi Sekarang</a>
+                    <a href="#scedule" class="btn btn-primary" style="background-color: #58A399;">Konsultasi Sekarang</a>
             </div>
             
             <!-- Right Section -->

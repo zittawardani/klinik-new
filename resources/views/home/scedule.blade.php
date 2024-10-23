@@ -1,3 +1,4 @@
+<div id="scedule">
 <div class="container-fluid" style="background-color: #EEEEEE; padding: 100px;">
     <h2 class="text-center mb-4" style="color: #58A399;">Jadwal Praktek Dokter</h2>
     <p class="text-center mb-5">Atur janji temu Anda dengan dokter kami secara online untuk konsultasi
@@ -163,3 +164,4 @@
         window.open(`https://wa.me/+6283847663334?text=${encodedMessage}`, '_blank');
     });
 </script>
+</div>
