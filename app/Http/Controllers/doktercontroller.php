@@ -80,9 +80,10 @@ class doktercontroller extends Controller
             $imagePath = storage_path('app/public/dokter/' . $dokter->foto_dokter); //foto disimpan pada public
 
             if (file_exists($imagePath)) {
-                unlink($imagePath);
+                unlink($imagePath); // menghapus gambar lama
             }
             
+            //mengupload gambar baru
             $image = $request->file('foto_dokter');
             $imageName = time().'.'.$image->getClientOriginalExtension();
             $image->storeAs('dokter', $imageName, 'public');
