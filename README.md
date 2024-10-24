@@ -1,4 +1,5 @@
-## Overview
+## Overview Klinik app
+The Klinik App is an information system that can facilitate online consultation registration, where you can choose a doctor and schedule that is provided on the website.
 
 ## Table of Contents
 
