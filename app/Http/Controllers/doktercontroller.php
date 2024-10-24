@@ -10,7 +10,7 @@ class doktercontroller extends Controller
 {
     // menampilkan ke halaman index yang berbentuk tabel
     public function index() {
-        $dokter = dokter::all();
+        $dokter = dokter::all(); //mengambil semua data dari tabel dokter
         return view('backend.dokter.index',[
             'title' => 'Dokter',
             'dokter' => $dokter,
@@ -74,7 +74,7 @@ class doktercontroller extends Controller
             'jadwal.*.sesi' => 'required|string',
         ]);
         
-        $dokter = dokter::find($id);
+        $dokter = dokter::find($id); //mencari dan mengambil data dokter berdasarkan id
         
         if ($request->hasFile('foto_dokter')) {
             $imagePath = storage_path('app/public/dokter/' . $dokter->foto_dokter); //foto disimpan pada public
