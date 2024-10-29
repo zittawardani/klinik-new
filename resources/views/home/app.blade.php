@@ -32,6 +32,7 @@
 
     @include('home.house')
     @includeWhen(isset($dokter), 'home.scedule')
+    @include('home.feedback')
     @include('home.footer')
 
     <!-- Bootstrap JS -->

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\doktercontroller;
+use App\Http\Controllers\FeedbackController;
 
 require __DIR__.'/lpWeb.php';
 
@@ -27,3 +28,6 @@ Route::prefix('dokter')->group(function(){
     Route::post('/update/{id}', [doktercontroller::class, 'update'])->name('dokter.update');
     Route::get('/delete/{id}', [doktercontroller::class, 'delete'])->name('dokter.delete');
 });
+
+Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
