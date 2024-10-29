@@ -8,14 +8,45 @@ use Illuminate\Support\Facades\Storage;
 
 class doktercontroller extends Controller
 {
+
     // menampilkan ke halaman index yang berbentuk tabel
-    public function index() {
-        $dokter = dokter::all(); //mengambil semua data dari tabel dokter
-        return view('backend.dokter.index',[
+    public function index(Request $request) {
+        // Data dokter diambil dari database
+        $dokterList = dokter::all()->toArray(); // Mengubah ke array untuk algoritma manual
+    
+        // Mendapatkan nilai pencarian dan pengurutan dari request
+        $searchTerm = $request->input('search', ''); //searching
+        $sortBy = $request->input('sort', 'nama_dokter'); // Default sorting by nama_dokter
+    
+        // Algoritma Linear Search untuk filtering
+        $filteredDokter = [];
+        foreach ($dokterList as $dokter) {
+            if (stripos($dokter['nama_dokter'], $searchTerm) !== false) { // Pencarian case-insensitive
+                $filteredDokter[] = $dokter;
+            }
+        }
+    
+        // Algoritma Bubble Sort untuk sorting
+        $n = count($filteredDokter);
+        for ($i = 0; $i < $n - 1; $i++) {
+            for ($j = 0; $j < $n - $i - 1; $j++) {
+                if ($filteredDokter[$j][$sortBy] > $filteredDokter[$j + 1][$sortBy]) {
+                    // Tukar posisi jika tidak dalam urutan yang benar
+                    $temp = $filteredDokter[$j];
+                    $filteredDokter[$j] = $filteredDokter[$j + 1];
+                    $filteredDokter[$j + 1] = $temp;
+                }
+            }
+        }
+    
+        // Kirim data ke view
+        return view('backend.dokter.index', [
             'title' => 'Dokter',
-            'dokter' => $dokter,
+            'dokter' => $filteredDokter, // Data hasil pencarian dan pengurutan
+            'searchTerm' => $searchTerm,
+            'sortBy' => $sortBy,
         ]);
-    }
+    }    
 
     public function create() {
         return view('backend.dokter.create', [
