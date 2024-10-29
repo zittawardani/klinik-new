@@ -14,6 +14,6 @@ class feedback extends Model
     ];
 
     public function dokter() {
-        return $this->belongsTo(Dokter::class);
+        return $this->belongsTo(Dokter::class); //penerapan relasion one to many
     }
 }

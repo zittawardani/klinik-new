@@ -43,7 +43,7 @@
         <div class="mb-3 text-start">
             <label for="feedbackType" class="form-label">Dokter</label>
             <select class="form-select" name="id_dokter" id="feedbackType" aria-label="Pilih jenis feedback">
-                <option selected disabled>Pilih jenis feedback</option>
+                <option selected disabled>Pilih Dokter</option>
                 @foreach ($dokter as $dokters)
                     <option value="{{ $dokters->id }}">{{ $dokters->nama_dokter }}</option>
                 @endforeach
