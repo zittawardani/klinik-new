@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\dokter;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+
 
 class doktercontroller extends Controller
 {
@@ -82,6 +84,14 @@ class doktercontroller extends Controller
         $dokter->foto_dokter = $imageName;
         $dokter->save(); // menyimpan kedalam database
 
+        Log::info('Dokter created: ', [
+            'sip' => $dokter->sip,
+            'nama_dokter' => $dokter->nama_dokter,
+            'spesialis' => $dokter->spesialis,
+            'jadwal' => $dokter->jadwal,
+            'foto_dokter' => $dokter->foto_dokter,
+        ]);
+
         return redirect()->route('dokter.index')->with('success', 'Data berhasil ditambahkan');
     }
 
@@ -133,6 +143,15 @@ class doktercontroller extends Controller
         
         $dokter->save();
 
+        Log::info('Dokter updated: ', [
+            'id' => $dokter->id,
+            'sip' => $dokter->sip,
+            'nama_dokter' => $dokter->nama_dokter,
+            'spesialis' => $dokter->spesialis,
+            'jadwal' => $dokter->jadwal,
+            'foto_dokter' => $dokter->foto_dokter,
+        ]);
+
         return redirect()->route('dokter.index')->with('success', 'Data berhasil di update');
     }
 
@@ -141,6 +160,15 @@ class doktercontroller extends Controller
         $dokter = dokter::find($id);
         Storage::delete('public/dokter/' . $dokter->foto_dokter); //menghapus gambar di storage
         $dokter->delete();
+
+        Log::info('Dokter deleted: ', [
+            'id' => $dokter->id,
+            'sip' => $dokter->sip,
+            'nama_dokter' => $dokter->nama_dokter,
+            'spesialis' => $dokter->spesialis,
+            'jadwal' => $dokter->jadwal,
+            'foto_dokter' => $dokter->foto_dokter,
+        ]);
 
         return redirect()->route('dokter.index')->with('success', 'Data berhasil di delete');
     }
