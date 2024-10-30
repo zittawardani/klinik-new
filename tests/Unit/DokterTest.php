@@ -44,8 +44,8 @@ class DokterTest extends TestCase
         // Tambah data
         $data = [
             'sip' => '9837487347',
-            'nama_dokter' => 'Dr. Zitta',
-            'spesialis' => 'Umum',
+            'nama_dokter' => 'Dr. Adi',
+            'spesialis' => 'Syaraf',
             'foto_dokter' => $file,
             'jadwal' => [
                 ['hari' => 'Senin', 'sesi' => 'Pagi'],
@@ -60,15 +60,14 @@ class DokterTest extends TestCase
 
         $this->assertDatabaseHas('dokters', [
             'sip' => '9837487347',
-            'nama_dokter' => 'Dr. Zitta',
-            'spesialis' => 'Umum',
+            'nama_dokter' => 'Dr. Adi',
+            'spesialis' => 'Syaraf',
         ]);
 
         // Periksa apakah gambar tersimpan di direktori yang tepat
         $storedFileName = Dokter::latest()->first()->foto_dokter;
 
     }
-
 
     /**
      * Test metode edit
@@ -87,7 +86,7 @@ class DokterTest extends TestCase
         // Data baru untuk diperbarui
         $data = [
             'sip' => '987654321',
-            'nama_dokter' => 'Dokter Baru',
+            'nama_dokter' => 'Dokter Lama',
             'spesialis' => 'Spesialis',
             'foto_dokter' => $file,
             'jadwal' => [
@@ -106,12 +105,11 @@ class DokterTest extends TestCase
         $this->assertDatabaseHas('dokters', [
             'id' => $dokter->id,
             'sip' => '987654321',
-            'nama_dokter' => 'Dokter Baru',
+            'nama_dokter' => 'Dokter Lama',
             'spesialis' => 'Spesialis',
         ]);
     }
     
-
     /**
      * Test metode delete
      */
@@ -140,8 +138,5 @@ class DokterTest extends TestCase
     
             // Pastikan gambar telah dihapus dari storage
             Storage::disk('public')->assertMissing('storage\app\public\dokter\1729444704.png');
-
     }
-
-
 }

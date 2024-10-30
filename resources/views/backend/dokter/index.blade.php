@@ -19,7 +19,7 @@
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary">Cari & Sortir</button>
+                    <button type="submit" class="btn btn-success" class="text-white text-decoration-none">Cari & Sortir</button>
                 </div>
             </div>
         </form>
