@@ -93,7 +93,8 @@ class doktercontroller extends Controller
         ]);
 
         return redirect()->route('dokter.index')->with('success', 'Data berhasil ditambahkan');
-    }
+    } 
+
 
     // proses untuk edit data
     public function edit($id) {
