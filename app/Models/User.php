@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -44,5 +45,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    const ROLE_ADMIN = 'admin';
+    const ROLE_PASIEN = 'pasien';
+
+    // Check if user is admin
+    public function isAdmin()
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    // Check if user is teacher (pasien)
+    public function isPasien()
+    {
+        return $this->role === self::ROLE_PASIEN;
     }
 }

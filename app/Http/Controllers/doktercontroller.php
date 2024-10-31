@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Log;
 
 class doktercontroller extends Controller
 {
+    public function admin() {
+        return view('dashboard');
+    }
 
     // menampilkan ke halaman index yang berbentuk tabel
     public function index(Request $request) {

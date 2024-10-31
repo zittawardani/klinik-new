@@ -20,14 +20,16 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // CRUD
-Route::prefix('dokter')->group(function(){
-    Route::get('/view', [doktercontroller::class, 'index'])->name('dokter.index');
-    Route::get('/add', [doktercontroller::class, 'create'])->name('dokter.add');
-    Route::post('/store', [doktercontroller::class, 'store'])->name('dokter.store');
-    Route::get('/edit/{id}', [doktercontroller::class, 'edit'])->name('dokter.edit');
-    Route::post('/update/{id}', [doktercontroller::class, 'update'])->name('dokter.update');
-    Route::get('/delete/{id}', [doktercontroller::class, 'delete'])->name('dokter.delete');
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/admin', [doktercontroller::class, 'admin'])->name('admin');
+    Route::prefix('dokter')->group(function(){
+        Route::get('/view', [doktercontroller::class, 'index'])->name('dokter.index');
+        Route::get('/add', [doktercontroller::class, 'create'])->name('dokter.add');
+        Route::post('/store', [doktercontroller::class, 'store'])->name('dokter.store');
+        Route::get('/edit/{id}', [doktercontroller::class, 'edit'])->name('dokter.edit');
+        Route::post('/update/{id}', [doktercontroller::class, 'update'])->name('dokter.update');
+        Route::get('/delete/{id}', [doktercontroller::class, 'delete'])->name('dokter.delete');
+    });
 });
-
 Route::get('/feedback', [FeedbackController::class, 'create'])->name('feedback.create');
 Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
