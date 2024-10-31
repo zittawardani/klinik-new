@@ -8,7 +8,7 @@ use App\Models\dokter;
 class LpDokterController extends Controller
 {
     public function index() {
-        $dokter = dokter::all(); //mengambil data dari database / table dokter
+        $dokter = Dokter::all(); //mengambil data dari database / table dokter
         return view('home.app', compact('dokter')); //mengambil data dari table dokter untuk ditampilkan ke home
     }
 }

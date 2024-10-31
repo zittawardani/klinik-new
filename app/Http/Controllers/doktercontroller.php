@@ -14,7 +14,7 @@ class doktercontroller extends Controller
     // menampilkan ke halaman index yang berbentuk tabel
     public function index(Request $request) {
         // Data dokter diambil dari database
-        $dokterList = dokter::all()->toArray(); // Mengubah ke array untuk algoritma manual
+        $dokterList = Dokter::all()->toArray(); // Mengubah ke array untuk algoritma manual
     
         // Mendapatkan nilai pencarian dan pengurutan dari request
         $searchTerm = $request->input('search', ''); //searching
