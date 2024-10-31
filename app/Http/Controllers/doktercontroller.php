@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\dokter;
+use App\Models\Dokter;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
