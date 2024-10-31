@@ -15,7 +15,7 @@
         "APP_ENV": "production",
         "APP_DEBUG": "true",
         "APP_URL": "mariadb://klinik_slabscount:f626553843ee74d90d1f354c93a0159a2241e361@ru7iy.h.filess.io:3305/klinik_slabscount",
-        "APP_KEY": "",
+        "APP_KEY": "base64:/wIBxDhEA0J3K+B8+ADVVDmAZexsfh7ugQQ8gJ5nOR0=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
