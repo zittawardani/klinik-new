@@ -14,8 +14,8 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://klinik-new.com",
-        "APP_KEY": "base64:vpKAXTN+Ysi3AtMLGer/AnAzYT/p1oc4fC5toyTUK3M=",
+        "APP_URL": "mariadb://klinik_slabscount:f626553843ee74d90d1f354c93a0159a2241e361@ru7iy.h.filess.io:3305/klinik_slabscount",
+        "APP_KEY": "",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
@@ -26,9 +26,10 @@
         "LOG_CHANNEL": "stack",
         "SESSION_DRIVER": "database",
         "DB_CONNECTION": "mysql",
-        "DB_HOST": "127.0.0.1",
-        "DB_PORT": "3306",
-        "DB_DATABASE": "klinik",
-        "DB_USERNAME": "root"
+        "DB_HOST": "ru7iy.h.filess.io",
+        "DB_PORT": "3305",
+        "DB_DATABASE": "klinik_slabscount",
+        "DB_USERNAME": "klinik_slabscount",
+        "DB_PASSWORD": "f626553843ee74d90d1f354c93a0159a2241e361"
     }
 }
