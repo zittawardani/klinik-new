@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -36,8 +37,7 @@ class AuthenticatedSessionController extends Controller
         } elseif ($role === 'pasien') {
             return redirect()->intended('/');
         } else {
-            return redirect()->intended(route('dashboard', absolute: false));
-        // return redirect()->intended(route('dashboard', absolute: false));
+            return redirect()->intended(route('dashboard', [],false));
     }
     }
     /**
@@ -51,6 +51,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }
